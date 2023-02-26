@@ -22,10 +22,17 @@ public class UserService {
         return em.find(User.class, id);
     }
 
-    public void deleteById(Long id){
+    public void deleteById(Long id) {
         em.getTransaction().begin();
-        em.remove(em.getReference(User.class,id));
+        em.remove(em.getReference(User.class, id));
         em.getTransaction().commit();
+    }
+
+    public User update(User user) {
+        em.getTransaction().begin();
+        User merge = em.merge(user);
+        em.getTransaction().commit();
+        return merge;
     }
 
 }

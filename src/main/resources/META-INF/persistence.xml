@@ -11,6 +11,8 @@
 
 
         <class>org.example.model.User</class>
+        <class>org.example.model.Order</class>
+
 
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
 

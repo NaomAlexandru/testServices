@@ -1,13 +1,15 @@
 package org.example.model;
 
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import lombok.Setter;
 
-@Data
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+
+@Getter
+@Setter
 @NoArgsConstructor
 @Entity
 public class User {
@@ -20,4 +22,6 @@ public class User {
     private String name;
     private String mobile;
 
+    @OneToMany(mappedBy = "user",fetch = FetchType.LAZY)
+    private final List<Order> orders = new ArrayList<>();
 }
